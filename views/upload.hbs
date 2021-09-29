@@ -1,0 +1,20 @@
+<div class="col-md-8 mx-auto mt-5">
+  <form class="form" action="/uploadfile" enctype="multipart/form-data" method="post" role="form" autocomplete="off">
+    <fieldset class="card">
+      <div class="card-header bg-info text-light">Sube tu foto de perfil {{username}} {{id}}</div>
+      <div class="card-body">
+         <div class="row">
+          <div class="col-md-12">
+            <label for="foto" class="form-label">Foto</label>
+            <input type="file" name="imagen" id="imagen" class="form-control" />
+          </div>
+        </div>
+         <div class="row">
+          <div class="col-md-12">
+            <button class="btn btn-info btn-lg float-right mt-3">Grabar foto</button>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+  </form>
+</div>

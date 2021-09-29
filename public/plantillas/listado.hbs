@@ -1,0 +1,30 @@
+{{#if productos.productos.length}}
+  <div class="productos-list mb-5">
+    {{#each productos.productos}}
+      <div class="card" style="width: 100%;">
+        <img src="https://picsum.photos/id/{{this.foto}}/200/150" class="card-img-top" alt={{this.nombre}} />
+        <div class="card-body">
+          <h5 class="card-title mb-0">{{this.nombre}}</h5>
+          <p class="card-text mb-1">{{this.descripcion}}</p>
+          <p class="card-text small mb-2">
+            <strong>ID:</strong> {{this.id}}<br />
+            <strong>Código:</strong> {{this.codigo}}<br />
+            <strong>Stock:</strong> {{this.stock}}
+          </p>
+          <p class="card-text text-success"><strong>$ {{this.precio}}</strong></p>
+          {{#if ../admin}}
+            <div class="btn-group mb-1" role="group">
+              <button class="btn btn-sm btn-primary" onclick="location.href = 'productos/actualizar/{{this.id}}'">Actualizar</button>
+              <button class="btn btn-sm btn-danger" onclick="return clickDelete('{{this.id}}')">Eliminar</button>
+            </div>
+            <button class="btn btn-sm btn-success btn-block" onclick="return clickAgregarCarrito('{{this.id}}')">Agregar al Carrito</button>
+          {{/if}}
+        </div>
+      </div>
+    {{/each}}
+  </div>
+{{else}}
+	<div class="alert alert-danger mb-5">
+		<strong>No hay productos que coincidan con su búsqueda!</strong>
+	</div>
+{{/if}}

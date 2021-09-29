@@ -1,0 +1,4 @@
+{"level":"warn","message":"Usuario no encontrado"}
+{"level":"error","message":"Hubo un error inicializando el servidor: Error: listen EADDRINUSE: address already in use :::8080"}
+{"level":"error","message":"Error grabando al usuario juan"}
+{"level":"warn","message":"El usuario ya existe."}

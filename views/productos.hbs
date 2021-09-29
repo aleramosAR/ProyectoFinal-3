@@ -1,0 +1,59 @@
+{{> menu}}
+{{> userdata}}
+<h3 class="mb-5">Listado de productos</h3>
+<div id="filtros" class="card card-body bg-light mb-5">
+  <p class="small mb-2">Seleccionar un tipo de filtro.</p>
+  <div class="list-group list-group-horizontal mb-4 small text-center" id="list-tab" role="tablist">
+    <a class="list-group-item list-group-item-action active p-1" id="l-no" data-toggle="list" href="#f-no" role="tab">Nombre</a>
+    <a class="list-group-item list-group-item-action p-1" id="l-co" data-toggle="list" href="#f-co" role="tab">Codigo</a>
+    <a class="list-group-item list-group-item-action p-1" id="l-pr" data-toggle="list" href="#f-pr" role="tab">Precio</a>
+    <a class="list-group-item list-group-item-action p-1" id="l-st" data-toggle="list" href="#f-st" role="tab">Stock</a>
+  </div>
+  <form class="form-inline" onsubmit="return clickFiltrarProductos()">
+    <div class="tab-content" id="nav-tabContent">
+      <div class="tab-pane fade show active" id="f-no" role="tabpanel" aria-labelledby="list-home-list">
+        <div class="form-group mr-3">
+          <label for="filNombre" class="pr-2">Nombre</label>
+          <input class="form-control" type="text" name="filNombre" id="filNombre" />
+        </div>
+      </div>
+      <div class="tab-pane fade" id="f-co" role="tabpanel" aria-labelledby="list-profile-list">
+        <div class="form-group mr-3">
+          <label for="filCodigo" class="pr-2">Codigo</label>
+          <input class="form-control" type="text" name="filCodigo" id="filCodigo" />
+        </div>
+      </div>
+      <div class="tab-pane fade" id="f-pr" role="tabpanel" aria-labelledby="list-profile-list">
+        <div class="form-inline">
+          <div class="form-group mr-3">
+            <label for="filPrecioMin" class="pr-2">Precio&nbsp;<span class="small">(min)</span></label>
+            <input class="form-control" type="number" name="filPrecioMin" id="filPrecioMin" value="0" style="width: 100px;" />
+          </div>
+          <div class="form-group mr-3">
+            <label for="filPrecioMax" class="pr-2">Precio&nbsp;<span class="small">(max)</span></label>
+            <input class="form-control" type="number" name="filPrecioMax" id="filPrecioMax" value="1000" style="width: 100px;" />
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="f-st" role="tabpanel" aria-labelledby="list-profile-list">
+        <div class="form-inline">
+          <div class="form-group mr-3">
+            <label for="filStockMin" class="pr-2">Stock&nbsp;<span class="small">(min)</span></label>
+            <input class="form-control" type="number" name="filStockMin" id="filStockMin" value="0" style="width: 100px;" />
+          </div>
+          <div class="form-group mr-3">
+            <label for="filStockMax" class="pr-2">Stock&nbsp;<span class="small">(max)</span></label>
+            <input class="form-control" type="number" name="filStockMax" id="filStockMax" value="100" style="width: 100px;" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-success small">Filtrar</button>
+  </form>
+  <div class="row">
+    <button class="btn btn-sm btn-secondary" onclick="return clickQuitarFiltros()" style="position: absolute; right:1.25rem; bottom: 1.25rem;">Quitar filtros</button>
+  </div>  
+</div>
+<div id="productos"></div>
+<hr class="mt-5 mb-5" />
+{{> form}}
