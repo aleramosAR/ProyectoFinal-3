@@ -1,17 +1,15 @@
 # Desafio 36 / Proyecto Final #3
 
 ### Consigna
-<br />
 
 * Un menú de registro y autenticación de usuarios basado en passport local, guardando en la base de datos las credenciales y el resto de los datos ingresados al momento del registro.
 
 * El registro de usuario consiste en crear una cuenta en el servidor almacenada en la base de datos, que contenga el email y password de usuario, además de su nombre, dirección, edad, número de teléfono (debe contener todos los prefijos internacionales) y foto ó avatar. La contraseña se almacenará encriptada en la base de datos.
 
 * La imagen se podrá subir al servidor y se guardará en una carpeta pública del mismo a la cual se tenga acceso por url.
-<br /><br /><br />
+<br /><br />
 
 ### Resolución
-<br />
 
 El login y registro se hacen con passport y los datos son grabados en la tabla **users** de MongoDB Atlas.<br /><br />
 
@@ -20,24 +18,24 @@ Al enviar el formulario se genera el **user** y como foto se levanta por defecto
 
 En el paso siguiente se sube la foto a la carpeta **/public/assets** y se actualiza el dato del usuario grabando el nombre de la foto en el registro de la base.<br /><br />
 Las fotos van en una carpeta pública, por ejemplo esta es la URL de la foto **template.jpg** que se muestra en caso de no subirse ninguna imagen.<br />
+
 https://coder-final-36.herokuapp.com/assets/template.jpg
 <br />
 <br />
 <hr />
-<br /><br />
+<br />
 
 ### Consigna
-<br />
 
 * Un formulario post de registro y uno de login. De modo que, luego de concretarse cualquiera de estas operaciones en forma exitosa, el usuario accederá a su home.
 
 * El usuario se logueará al sistema con email y password y tendrá acceso a un menú en su vista, a modo de barra de navegación. Esto le permitirá ver los productos totales con los filtros que se hayan implementado y su propio carrito de compras e información propia (datos de registro con la foto). Además, dispondrá de una opción para desloguearse del sistema.
 
 * Ante la incorporación de un usuario, el servidor enviará un email al administrador con todos los datos de registro y asunto 'nuevo registro', a una dirección que se encuentre por el momento almacenada en una constante global.
-<br /><br /><br />
+<br /><br />
 
 ### Resolución
-<br />
+
 Por defecto el usuario es enviado al form de login al ingresar a la app (en caso de ya estar logueado y tener la sesión activa, sera redireccionado al listado de productos)<br />
 
 https://coder-final-36.herokuapp.com/login
@@ -56,16 +54,12 @@ Al registrarse un nuevo usuario se envia un email (por medio de nodemailer) a la
 En el siguiente link adjunto una captura del email que llega al crear un usuario nuevo.
 
 https://coder-final-36.herokuapp.com/docs/registro-mailadmin.jpg
-
-
 <br />
 <br />
 <hr />
-<br /><br />
-  
+<br />
 
 ### Consigna
-<br />
 
 * Envío de un email y un mensaje de whatsapp al administrador desde el servidor, a un número de contacto almacenado en una constante global.
 
@@ -76,11 +70,10 @@ https://coder-final-36.herokuapp.com/docs/registro-mailadmin.jpg
 * El email contendrá en su cuerpo la lista completa de productos a comprar y en el asunto la frase 'nuevo pedido de ' y el nombre y email del usuario que los solicitó. En el mensaje de whatsapp se debe enviar la misma información del asunto del email.
 
 * El usuario recibirá un mensaje de texto al número que haya registrado, indicando que su pedido ha sido recibido y se encuentra en proceso.
-
-<br />
+<br /><br />
 
 ### Resolución
-<br />
+
 Debajo de la tabla de items del carrito se verá un botón de **COMPRAR** (sólo visible si hay elementos en el carrito)
 <br /><br />
 Una vez que se hace la compra se borra el carrito de la tabla, ya que los productos ya fueron "vendidos".
@@ -88,18 +81,15 @@ La función devuelve un objeto con los datos de la orden, es decir los datos del
 <br /><br />
 El controlador recibe estos datos y envía un email (mediante nodemailer) y un whatsapp (mediante twillio) al admin. El email con los datos completos de la compra y el whatsapp solo con el texto "Nueva compra de NOMBRE_COMPRADOR"
 <br /><br />
-En el siguiente link se puede ver el email que recibe el admin con el detalle de la compra, agregue que ademas muestre el precio final con la suma de los precios de los items comprados.<br /><br />
+En el siguiente link se puede ver el email que recibe el admin con el detalle de la compra, agregue que ademas muestre el precio final con la suma de los precios de los items comprados.<br />
 
 https://coder-final-36.herokuapp.com/docs/compra-mailadmin.jpg
-
 <br />
 <br />
 <hr />
-<br /><br />
-  
-
-## Aspectos a incluir:
 <br />
+
+### Aspectos a incluir:
 
 * El servidor trabajará con una base de datos DBaaS (Ej. MongoDB Atlas) y estará preparado para trabajar en forma local o en la nube a través de la plataforma PAAS Heroku.
 
@@ -108,11 +98,9 @@ https://coder-final-36.herokuapp.com/docs/compra-mailadmin.jpg
 * Utilizar alguno de los loggers ya vistos y así reemplazar todos los mensajes a consola por logs eficientes hacia la misma consola. En el caso de errores moderados ó graves el log tendrá además como destino un archivo elegido.
 
 * Realizar una prueba de performance en modo local, con y sin cluster, utilizando Artillery en el endpoint del listado de productos (con el usuario vez logueado). Verificar los resultados.
-
-<br />
+<br /><br />
 
 ### Resolución
-<br />
 
 El sitio usa la base de datos **MongoDB Atlas** y esta subido tanto a **Github** como a **Heroku**, corriendo en la siguiente dirección:<br />
 https://coder-final-36.herokuapp.com/
@@ -134,7 +122,6 @@ Cree una ruta llamada ``/productos/log`` que carga la pagina de ``/productos`` p
 
 ```
 artillery quick --count 50 -n 20 http://localhost:8080/api/productos > artillery_sinlog.txt
-
 artillery quick --count 50 -n 20 http://localhost:8080/api/productos/log > artillery_conlog.txt
 ```
 
